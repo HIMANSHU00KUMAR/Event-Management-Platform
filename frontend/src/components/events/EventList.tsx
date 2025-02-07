@@ -42,14 +42,14 @@ export const EventList: React.FC = () => {
 
     // Subscribe to all existing event rooms on initial load
     events.forEach(event => {
-      socketService.joinEventRoom(event._id);
+      socketService.joinEventRoom(event._id || '');
     });
 
     // Cleanup
     return () => {
       // Leave all event rooms before disconnecting
       events.forEach(event => {
-        socketService.leaveEventRoom(event._id);
+        socketService.leaveEventRoom(event._id || '');
       });
       socketService.disconnect();
       socketService.removeAllListeners();
@@ -62,7 +62,7 @@ export const EventList: React.FC = () => {
       setEvents(eventList);
       // Join all event rooms after loading
       eventList.forEach(event => {
-        socketService.joinEventRoom(event._id);
+        socketService.joinEventRoom(event._id || '');
       });
     } catch (error) {
       console.error('Error loading events:', error);
@@ -124,7 +124,7 @@ export const EventList: React.FC = () => {
         variant="contained"
         color="primary"
         size="small"
-        onClick={() => handleJoinEvent(event._id)}
+        onClick={() => handleJoinEvent(event._id || '')}
       >
         Join Event
       </Button>

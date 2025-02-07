@@ -39,14 +39,21 @@ export const EventCreate: React.FC = () => {
   
     try {
       await eventService.createEvent({
-        ...formData,
+        title: formData.title,
+        description: formData.description,
+        date: formData.date, // Keep it as a Date object
+        location: formData.location,
+        category: formData.category,
         maxAttendees: formData.maxAttendees ? parseInt(formData.maxAttendees) : undefined,
       });
+  
       navigate('/events');
     } catch (error) {
       console.error('Error creating event:', error);
     }
   };
+  
+  
   
 
 
