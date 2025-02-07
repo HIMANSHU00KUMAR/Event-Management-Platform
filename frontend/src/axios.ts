@@ -1,11 +1,16 @@
 import axios from 'axios';
 
+
+
+
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: 'https://event-management-platform-frae.onrender.com/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
+
+console.log("api from axios ts", api);
 
 // Add auth token to requests if it exists
 api.interceptors.request.use((config) => {

@@ -1,11 +1,12 @@
 import { io, Socket } from 'socket.io-client';
 import { Event, User } from '../types';
 
+
 class SocketService {
   private socket: Socket | null = null;
 
   connect() {
-    this.socket = io('http://localhost:3000');
+    this.socket = io('https://event-management-platform-frae.onrender.com');
 
     this.socket.on('connect', () => {
       console.log('Connected to WebSocket');
