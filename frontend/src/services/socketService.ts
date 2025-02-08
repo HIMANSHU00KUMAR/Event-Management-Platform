@@ -6,7 +6,7 @@ class SocketService {
   private socket: Socket | null = null;
 
   connect() {
-    this.socket = io('https://event-management-platform-frae.onrender.com');
+    this.socket = io('https://event-management-platformbbb.onrender.com');
 
     this.socket.on('connect', () => {
       console.log('Connected to WebSocket');
